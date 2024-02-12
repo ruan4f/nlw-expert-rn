@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { View, FlatList } from 'react-native';
+import { useRef, useState } from 'react';
+import { View, FlatList, SectionList } from 'react-native';
 
-import { CATEGORIES } from '@/utils/data/products';
+import { CATEGORIES, MENU, ProductProps } from '@/utils/data/products';
 
 import { Header } from '@/components/header';
 import { CategoryButton } from '@/components/category-button';
 
 export default function Home() {
   const [category, setCategory] = useState(CATEGORIES[0]);
+
+  const sectionListRef = useRef<SectionList<ProductProps>>(null);
 
   function handleCategorySelect(selectedCategory: string) {
     setCategory(selectedCategory);
